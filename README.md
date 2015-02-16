@@ -11,7 +11,7 @@ This gives you the <code>dateGap</code> object which has several useful methods.
 
 ```javascript
 
-dateGap().getDaysSinceDate(21, 11, 1979);
+dateGap.getDaysSinceDate(21, 11, 1979);
 
 ```
 
@@ -19,11 +19,11 @@ Follow this same pattern but with the appropriate "since" method to get the amou
 
 ```javascript
 
-dateGap().getMinutesSinceDate(21, 11, 1979);
-dateGap().getHoursSinceDate(21, 11, 1979);
-dateGap().getWeeksSinceDate(21, 11, 1979);
-dateGap().getMonthsSinceDate(21, 11, 1979);
-dateGap().getYearsSinceDate(21, 11, 1979);
+dateGap.getMinutesSinceDate(21, 11, 1979);
+dateGap.getHoursSinceDate(21, 11, 1979);
+dateGap.getWeeksSinceDate(21, 11, 1979);
+dateGap.getMonthsSinceDate(21, 11, 1979);
+dateGap.getYearsSinceDate(21, 11, 1979);
 
 ```
 
@@ -31,12 +31,12 @@ To get the amount of minutes, hours, days, weeks, months or years from the prese
 
 ```javascript
 
-dateGap().getMinutesUntilDate(21, 11, 2017);
-dateGap().getHoursUntilDate(21, 11, 2017);
-dateGap().getDaysUntilDate(21, 11, 2017);
-dateGap().getDaysUntilDate(21, 11, 2017);
-dateGap().getMonthsUntilDate(21, 11, 2017);
-dateGap().getYearsUntilDate(21, 11, 2017);
+dateGap.getMinutesUntilDate(21, 11, 2017);
+dateGap.getHoursUntilDate(21, 11, 2017);
+dateGap.getDaysUntilDate(21, 11, 2017);
+dateGap.getDaysUntilDate(21, 11, 2017);
+dateGap.getMonthsUntilDate(21, 11, 2017);
+dateGap.getYearsUntilDate(21, 11, 2017);
 
 ```
 
@@ -44,22 +44,22 @@ To get the amount of days between two dates use the <code>getDaysBetweenTwoDates
 
 ```javascript
 
-dateGap().getDaysBetweenTwoDates(15, 2, 2013, 15, 2, 2015);
+dateGap.getDaysBetweenTwoDates(15, 2, 2013, 15, 2, 2015);
 
 ```
 To get the amount of minutes, hours, weeks, months or years between two dates pass a number of days into any of the "since" methods. Passing in a single number into any of these methods will return the appropriate amount of minutes, hours, weeks, months, years from that amount of days.
 
 ```javascript
 
-var days = dateGap().getDaysBetweenTwoDates(15, 2, 2013, 15, 2, 2015);
-dateGap().getMinutesSinceDate(days);
-dateGap().getHoursSinceDate(days);
-dateGap().getWeeksSinceDate(days);
-dateGap().getMonthsSinceDate(days);
-dateGap().getYearsSinceDate(days);
+var days = dateGap.getDaysBetweenTwoDates(15, 2, 2013, 15, 2, 2015);
+dateGap.getMinutesSinceDate(days);
+dateGap.getHoursSinceDate(days);
+dateGap.getWeeksSinceDate(days);
+dateGap.getMonthsSinceDate(days);
+dateGap.getYearsSinceDate(days);
 
 // is the same as 
-dateGap().getMinutesSinceDate(dateGap().getDaysBetweenTwoDates(15, 2, 2013, 15, 2, 2015));
+dateGap.getMinutesSinceDate(dateGap.getDaysBetweenTwoDates(15, 2, 2013, 15, 2, 2015));
 
 ```
 <h2>Dependencies</h2>
