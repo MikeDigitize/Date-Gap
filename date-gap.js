@@ -1,4 +1,4 @@
-var dateGap = function() {
+var dateGap = (function() {
  
     function getDaysInMonths(m, y) {
         return /8|3|5|10/.test(--m) ? 30 : m == 1 ? (!(y % 4) && y % 100) || !(y % 400) ? 29 : 28 : 31;
@@ -22,29 +22,29 @@ var dateGap = function() {
  
     function getDaysBetweenTwoDates(d1, m1, y1, d2, m2, y2) {
  
-	var diff = getDifferenceInYears(y2, y1), total = 0;	
- 
-	if(!diff) {
-	    return getDaysBetweenTwoDatesInSameYear(d1, m1, d2, m2, y1);
-	}
-	else {
- 
-	    if(diff === 1) {	
- 
-		return getDaysBetweenTwoDatesInSameYear(d1, m1, 31, 12, y1) +
-			getDaysBetweenTwoDatesInSameYear(1, 1, d2, m2, y2);
- 
-	    }
-	    else {
- 
-	        total += getDaysInYears(y1 + 1, y2);			
-	
-	        total += getDaysBetweenTwoDatesInSameYear(d1, m1, 31, 12, y1) +
-			getDaysBetweenTwoDatesInSameYear(1, 1, d2, m2, y2);
- 
-	        return total;	
- 
-	    }
+		var diff = getDifferenceInYears(y2, y1), total = 0;	
+	 
+		if(!diff) {
+		    return getDaysBetweenTwoDatesInSameYear(d1, m1, d2, m2, y1);
+		}
+		else {
+	 
+		    if(diff === 1) {	
+	 
+			return getDaysBetweenTwoDatesInSameYear(d1, m1, 31, 12, y1) +
+				getDaysBetweenTwoDatesInSameYear(1, 1, d2, m2, y2);
+	 
+		    }
+		    else {
+	 
+		        total += getDaysInYears(y1 + 1, y2);			
+		
+		        total += getDaysBetweenTwoDatesInSameYear(d1, m1, 31, 12, y1) +
+				getDaysBetweenTwoDatesInSameYear(1, 1, d2, m2, y2);
+	 
+		        return total;	
+	 
+		    }
  
         }
  
@@ -52,28 +52,28 @@ var dateGap = function() {
  
     function getDaysBetweenTwoDatesInSameYear(d1, m1, d2, m2, y) {
  
-	var total = 0, leapYear;
- 
-	if(m1 === m2) {
-	    return d2 - d1;
-	}
-	else {
- 
-	    leapYear = isLeapYear(y) ? true : false;
- 
-	    if(m2 - m1 === 1) {				
-			return getDaysRemainingFromMonth(d1, m1, leapYear) + d2;				
-	    } 
-	    else {
- 
-			total+= getDaysRemainingFromMonth(d1, m1, leapYear) + d2;
-			total += getDaysInMonthsBetween(m1 + 1, m2, y);
- 
-		return total;
- 
-	    }
- 
-	}
+		var total = 0, leapYear;
+	 
+		if(m1 === m2) {
+		    return d2 - d1;
+		}
+		else {
+	 
+		    leapYear = isLeapYear(y) ? true : false;
+	 
+		    if(m2 - m1 === 1) {				
+				return getDaysRemainingFromMonth(d1, m1, leapYear) + d2;				
+		    } 
+		    else {
+	 
+				total+= getDaysRemainingFromMonth(d1, m1, leapYear) + d2;
+				total += getDaysInMonthsBetween(m1 + 1, m2, y);
+	 
+			return total;
+	 
+		    }
+	 
+		}
  
     }
  
@@ -116,6 +116,10 @@ var dateGap = function() {
     function getHoursFromDays(d) {
 		return d * 24;
     }
+
+    function getMinsFromDays(d) {
+		return (d * 24) * 60;
+    }
  
     function getMonthsFromDays(d) {
  		return Number((getYearsFromDays(d) * 12).toFixed(2));
@@ -152,6 +156,12 @@ var dateGap = function() {
 		getDaysUntilDate : function(d, m, y) {
 		    return getDaysToDate(d, m, y);
 		},
+		getMinutesFromDate : function(d, m, y) {
+			return getMinsFromDays(daysOrDate(arguments, getDaysFromDate));
+		},
+		getHoursFromDate : function(d, m, y) {
+			return getHoursFromDays(daysOrDate(arguments, getDaysFromDate));
+		},
 		getWeeksSinceDate : function(d, m, y) {				
 		    return getWeeksFromDays(daysOrDate(arguments, getDaysFromDate));
 		},
@@ -176,4 +186,4 @@ var dateGap = function() {
  
     }		
  
-};
+})();
