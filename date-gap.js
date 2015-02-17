@@ -156,10 +156,10 @@ var dateGap = (function() {
 		getDaysUntilDate : function(d, m, y) {
 		    return getDaysToDate(d, m, y);
 		},
-		getMinutesFromDate : function(d, m, y) {
+		getMinutesSinceDate : function(d, m, y) {
 			return getMinsFromDays(daysOrDate(arguments, getDaysFromDate));
 		},
-		getHoursFromDate : function(d, m, y) {
+		getHoursSinceDate : function(d, m, y) {
 			return getHoursFromDays(daysOrDate(arguments, getDaysFromDate));
 		},
 		getWeeksSinceDate : function(d, m, y) {				
